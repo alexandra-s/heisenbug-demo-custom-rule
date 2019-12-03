@@ -5393,4 +5393,24 @@ HTTP パラメータで使用する前にユーザー入力をエスケープし
     </BugPattern>
     <BugCode abbrev="SECHPP">HTTP Parameter Pollution</BugCode>
 
+
+    <Detector class="com.h3xstream.findsecbugs.heisenbugdemo.IdorDetectorTest">
+        <Details>Identify possible insecure direct object reference in Spring Endpoint.</Details>
+    </Detector>
+    <BugPattern type="IDOR">
+        <ShortDescription>IDOR</ShortDescription>
+        <LongDescription>Spring Endpoint not calling canAccess() method probably fail to implement access control properly and are vulnerable to insecure direct object reference</LongDescription>
+        <Details>
+            <![CDATA[
+<p>
+    Methods annotated with @GetMappint and @PostMapping represent endpoints accessible to user directly.
+    Every method needs to check if current user is allowed to perform requested operation before actually handling the request.
+</p>
+[...]
+
+            ]]>
+        </Details>
+    </BugPattern>
+    <BugCode abbrev="IDOR">IDOR</BugCode>
+
 </MessageCollection>
